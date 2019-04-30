@@ -1,0 +1,33 @@
+[
+	{
+		"short": "generalist",
+		"name" : "Generalist",
+		"unlocked": true,
+		"recipe": { "consumes": [], "products": [""], "requires": [""] }
+	}, {
+		"short": "hunter",
+		"name" : "Hunter",
+		"unlocked": true,
+		"recipe": { "consumes": [], "products": [""], "requires": [""] }
+	}, {
+		"short": "water",
+		"name" : "Water collector",
+		"unlocked": true,
+		"recipe": { "consumes": [], "products": [""], "requires": [""] }
+	}, {
+		"short": "gatherer",
+		"name" : "Gatherer",
+		"unlocked": false,
+		"recipe": { "consumes": [], "products": [""], "requires": [""] }
+	}, {
+		"short": "toolmaker",
+		"name" : "Tool crafter",
+		"unlocked": false,
+		"recipe": { "consumes": ["stone"], "products": [""], "requires": [""] }
+	}, {
+		"short": "weaponmaker",
+		"name" : "Weapon crafter",
+		"unlocked": false,
+		"recipe": { "consumes": ["stone"], "products": [""], "requires": [""] }
+	}
+]

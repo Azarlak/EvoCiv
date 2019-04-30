@@ -1,0 +1,46 @@
+.window {
+	background-color: #0A0A0A;
+}
+#settingsWindow {
+	width: 50%;
+	height: 80%;
+	max-width: 50em;
+	min-width: 20em;
+}
+.window > .titleBar {
+	background-color: #020202;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	width: 100%;
+}
+.window > .titleBar > h2 {
+	grid-column: 2;
+	text-align: center;
+}
+.window > .titleBar > .titleBarButtons {
+	display: inline-flex;
+	flex-direction: row-reverse;
+}
+.closeButton {
+	background-color: #AA0000;
+	border-color: #CC0000;
+	border-width: 0.2em;
+	height: 100% - 0.4em;
+}
+.closeButton:hover {
+	background-color: #CC0000;
+	border-color: #FF0000;
+}
+.closeButton:active {
+	border-style: inset;
+	background-color: #FF2222;
+	border-color: #FF4444;
+}
+.window > .titleBar > .titleBarButtons > .closeButton {
+	width: 2em;
+	height: 2em;
+}
+.window > .content {
+	padding: 0.5em;
+	display: block;
+}

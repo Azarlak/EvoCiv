@@ -1,0 +1,274 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	background-color: #111;
+	/* background-color: black; */
+ }
+#topBar {
+	display: block;
+ }
+#wrapper {
+	background-color: #111;
+	display: grid;
+	grid-template-rows: 2.5em 5em auto;
+	grid-template-columns: auto auto auto;
+	padding: 1vh;
+	gap: 0.5em;
+	height: 98vh;
+	width: 98vw;
+ }
+#wrapper > .gridItem {
+	min-width: 15em;
+	background-color: black;
+ }
+#topBar {
+	grid-column: 1 / span 3
+ }
+#topBar > * {
+	display: inline-block;
+ }
+.gamePanel {
+	display: inline-block;
+}
+#titleSection {
+	background-color: inherit;
+	height: 100%;
+ }
+#titleSection > * {
+	display: inline-block;
+ }
+.creatorSection {
+	background-color: inherit;
+ }
+#title {
+	display: inline-block;
+	color: white;
+	background-color: inherit;
+ }
+.madeBy {
+	display: inline-block;
+	background-color: inherit;
+	color: #777777;
+ }
+.creatorLink {
+	background-color: inherit;
+	color: #8888b8;
+ }
+.creatorLink:visited {
+	background-color: inherit;
+	color: #b88888;
+ }
+#topBarMenu {
+	background-color: inherit;
+	display: flex;
+	float: right;
+	height: 100%;
+ }
+#topBarMenu > button {
+	/* border: blue 1px solid; */
+	margin: 0.2em 0.5em;
+ }
+button {
+	background-color: #151515;
+	border-style: outset;
+	border: #666 0.15em outset;
+	color: #BBB;
+ }
+button:hover {
+	border-color: #888;
+ }
+button:active {
+	border-style: inset;
+	border-color: #888;
+ }
+.clickableText {
+	background: 0;
+	font-size: 100%;
+	border: 0;
+ }
+.clickableText:hover {
+	cursor: pointer;
+	text-decoration-line: underline;
+	color: #CACACA;
+ }
+.clickableIcon {
+	background: 0;
+	font-size: 100%;
+	border: 0;
+ }
+.clickableIcon:hover {
+	cursor: pointer;
+	color: #CCC;
+}
+
+.tabsSection {
+	grid-column: 1 / span 3
+ }
+.gamePanel {
+	min-height: 10em;
+	overflow-y: auto;
+	resize: horizontal;
+}
+
+.overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.1);
+	top: 0; 
+	left: 0;
+	right: 0;
+	bottom: 0;
+ }
+.overlayContent {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 90%;
+ }
+.settingsContainer {
+	border-width: initial;
+	padding: 0.15em;
+ }
+.settingToggle {
+	margin-right: 0.5em;
+ }
+#representationSetting {
+	padding: 0.1em;
+}
+#representationSetting > * {
+	display: inline;
+}
+#representationSettingFlexbox {
+	padding: 0.1em;
+	display: grid;
+	grid-template-rows   : auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto;
+}
+#representationSettingFlexbox > .spacer {
+	grid-area: 1 / 1 / span 2 / span 2;
+}
+#representationSettingFlexbox > label {
+	display: flex;
+}
+#representationSettingFlexbox > * {
+	display: flex;
+	text-align: center;
+	padding: 0.2em;
+}
+#representationSettingFlexbox > label > * {
+	margin: auto;
+}
+#representationSettingFlexbox > h4 {
+	text-align: center;
+}
+#representationSettingFlexbox > label:nth-of-type(1) {
+	grid-column: 3 / span 3;
+}
+#representationSettingFlexbox > label:nth-of-type(2) {
+	grid-row: 3 / span 3;
+}
+#representationSettingFlexbox > * {
+	border: red solid 1px;
+	display: inline-block;
+}
+#representationSettingFlexbox > .flexboxRow {
+	grid-column: 3 / span 3;
+}
+#representationSettingFlexbox > .flexboxRow/* #preferTypesRow */ {
+	display: grid;
+	padding: 0.5%;
+	grid-template-columns: auto auto auto;
+	gap: 0.05em;
+}
+#representationSettingFlexbox > .flexboxRow/* #preferTypesRow */ > * {
+	margin: auto;
+}
+
+
+
+.rangeContainer {
+	display: grid;
+}
+.H.rangeContainer {
+	grid-template-columns: 5em 5em auto;
+}
+.H > .innerRangeContainer {
+	display: grid;
+	grid-template-columns: 1em auto 1em;
+}
+.H > .innerRangeContainer > * {
+	orientation: portrait;
+	background-color: inherit;
+	height: 10em;
+	width: 5em;
+	transform: rotate(270deg);
+}
+.H > .innerRangeContainer > .decreaseButton {
+	content: icon;
+	width: 0;
+	height: 0;
+	border: 0;
+	border-right: 1em solid;
+	border-top: 1em solid transparent;
+	border-bottom: 1em solid transparent;
+}
+.H > .innerRangeContainer > .increaseButton {
+	
+}
+.rangeSlider {
+	width: auto;
+ }
+.rangeField {
+	width: 5em;
+}
+
+#iconList * {
+	margin-left: 1em;
+}
+
+
+
+
+.generatorSection {
+	min-height: 5em;
+}
+/* @todo: Change "item" to "itemBanner"? */
+.item {
+	border: gold 1px solid;
+	margin: 0.3em;
+ }
+.item > .main > .thumbnail {
+	background-color: chartreuse;
+	display: inline-block;
+ }
+.item > .main > form {
+	display: inline-block;
+ }
+.item > .main > form > .allocationInput {
+	/* min-width: 1em; */
+	width: 5em;
+ }
+.item > .main > .productionDisplay > * {
+	display: inline-block;
+}
+
+.item > .main > form > input[type=number] { 
+	-moz-appearance: textfield;
+	appearance: textfield;
+ }
+.item > .main > form > input[type=number]::-webkit-inner-spin-button, 
+.item > .main > form > input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none; 
+}
+
+
+
+
+
+
+
+

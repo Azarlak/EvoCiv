@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>EvoCiv Idle (WORK IN PROGRESS)</title>
+		<base href="." target="_blank"/>
+	</head>
+	<body>
+		<div class="overlay" id="settingsOverlay">
+			<div class="overlayContent">
+				<!-- Make this a <dialog> element instead? -->
+				<!-- @todo: Everything, more or less -->
+				<section class="window" id="settingsWindow">
+					<!-- @todo -->
+					<header  class="titleBar">
+						<h2>Settings</h2>
+						<!-- @todo -->
+						<section class="titleBarButtons">
+							<button class="closeButton" onclick="document.getElementById('settingsOverlay').style.display = 'none';">
+								X
+							</button>
+						</section>
+					 </header>
+					<!-- @todo -->
+					<section class="content">
+						<!-- @todo -->
+						<fieldset class="settingsContainer" id="displaySettings">
+							<legend><h3>Display</h3></legend>
+							<!-- @todo -->
+							<span     class="selectorContainer" id="themeSetting">
+								<label for="themeSetting">Theme:</label>
+								<!-- @todo -->							
+								<select id="themeSettingSelector">
+									<optgroup label="Dark themes" >
+										<option>Dark         </option>
+										<option>Reversed Dark</option><!-- Basically the same as dark, but the darkest tones of Dark are the brightest here, and vice versa -->
+									 </optgroup>
+									<optgroup label="Light themes">
+									 </optgroup>
+									<optgroup label="Thematic">
+										<option>Chóma     </option><!-- Brown-green         --> <!-- AKA: "Solum" -->
+										<option>Akatharsia</option><!-- Brown-beige-yellow  -->
+										<option>Natura    </option><!-- Green, blue, brown  -->
+										<option>Arenora   </option><!-- Yellow-beige-white  --> <!-- If you figure out the origin of this one's name, well done, it requires knowledge of two different languages, and netiher of them is English. ;P Although at least one step can be googled :P -->
+										<option>Wildfire  </option><!-- Red-yellows, ~black -->
+										<option>Atlantis  </option><!-- Blues, darks, greys -->
+									 </optgroup>
+								 </select>
+							 </span>
+							<!-- @todo -->
+							<fieldset class="settingsContainer" id="numbersSettings">
+								<legend><h4>Numbers</h4></legend>
+								<!-- @todo -->
+								<div class="selectorContainer" id="numberFormatSetting">
+									<label for="numberFormatSetting">Number format:</label>
+									<!-- @todo -->
+									<select id="numberFormatSettingSelector">
+										<optgroup label="E-notation">
+											<option>Normalized </option>
+											<option>Engineering</option>
+										 </optgroup>
+										<optgroup label="Abbreviation">
+											<option>SI Units  </option>
+											<option>Alphabetic</option> <!-- A-Z, AA-AZ-ZZ, etc -->
+											<option>Standard  </option> <!-- https://www.swarmsim.com/#/decimallegend -->
+										 </optgroup>
+										<optgroup label="Other">
+											<option>Standard</option> <!-- https://www.swarmsim.com/#/decimallegend -->
+											<option>Hybrid  </option>
+										 </optgroup>
+									 </select>
+								 </div>
+								<!-- @todo -->
+								<div class="H rangeContainer"  id="precisionSetting"   >
+									<label for="precisionSetting">Precision:</label>
+									<input type="number" class="rangeField"  id="precisionSettingField"/>
+									<div class="innerRangeContainer">
+										<button class="clickable decreaseButton"></button>
+										<input type="range" class="rangeSlider" id="precisionSettingSlider" markings='{start:1, "end": 5, step: "1"}' min="1" max="5" step="1" value="2" list="precisionSettingSliderList"/>
+										<button class="clickable increaseButton"></button>
+									</div>
+								 </div>
+								<!-- @todo -->
+								<div class="radioSetContainer" id="velocityUnitSetting">
+									<label for="velocityUnitSetting">Measure income per:</label>
+									<input type="radio" name="velocityUnitSetting"><label>Seconds</label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Minutes</label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Hours  </label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Days   </label></input>
+								 </div>
+								<!-- @todo -->
+								<div class="radioSetContainer" id="durationUnitSetting">
+									<label for="durationUnitSetting">Measure time durations:</label>
+									<input type="radio" name="durationUnitSetting"><label>Exactly      </label></input> <!-- Like, 3 days, 2 hours, 38 minutes, and 24 seconds -->
+									<input type="radio" name="durationUnitSetting"><label>Approximately</label></input> <!-- Like, (around | ~) 3 days -->
+								 </div>
+							 </fieldset>
+							<!-- @todo -->
+							<span     class="rangeContainer"  id="fpsSetting"> <!-- TOOLTIP: "This effect is only visual, it does not affect the rate of calculations. May help if you're lagging a bit." -->
+								<label for="fpsSetting">FPS:</label>
+								<input type="range"  class="rangeSlider" id="fpsSettingSlider" list="fpsSettingSliderList" min="1" max="60" step="1" value="10"/>
+								<input type="number" class="rangeField"  id="fpsSettingField"  list="fpsSettingAutofillList"></input>
+								<datalist class="sliderMarksList" id="fpsSettingSliderList">
+									<option value=1 ></option>
+									<option value=10></option>
+									<option value=20></option>
+									<option value=30></option>
+									<option value=40></option>
+									<option value=50></option>
+									<option value=60></option>
+								 </datalist>
+								<datalist class="autofillList"    id="fpsSettingAutofillList">
+									<option value=1></option>
+									<option value=5></option>
+									<option value=10></option>
+									<option value=15></option>
+									<option value=20></option>
+									<option value=30></option>
+									<option value=50></option>
+									<option value=60></option>
+								 </datalist>
+							 </span>
+							<!-- @todo -->
+							<fieldset class="ballotsContainer"  id="representationSetting">
+								<legend><h3>Representation</h3></legend>
+								<!-- @todo -->
+								<div class="crossReferenceCheckboxes" id="representationSettingFlexbox">
+									<!-- https://en.wikipedia.org/wiki/Semigraphics -->
+									<header class="spacer"></header>
+									<label><h3>Prefer</h3></label>
+									<ul class="flexboxRow" id="preferTypesRow">
+										<h4>Icons  </h4>
+										<h4>Symbols</h4>
+										<h4>Text   </h4>
+									</ul>
+									
+									<label><h3>When displaying</h3></label>
+									<h4>All      </h4>
+									<span class="flexboxRow">
+										<input type="checkbox" class="settingToggle"/></input> <!-- AKA: "Prefer icons to labels for buttons", "Prefer iconographic buttons" -->
+										<input type="checkbox" class="settingToggle"/></input> <!-- Anything that can be a symbol, will be -->
+										<input type="checkbox" class="settingToggle"/></input> <!-- AKA: "Work Mode", "SFW Mode" -->
+									 </span>
+									<h4>Buttons  </h4>
+									<span class="flexboxRow">
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!-- AKA: "Prefer icons to labels for buttons", "Prefer iconographic buttons" -->
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!--  -->
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!-- AKA: "Work Mode", "SFW Mode" -->
+									 </span>
+									<h4>Resources</h4>
+									<span class="flexboxRow">
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!-- AKA: "Prefer icons to labels for buttons", "Prefer iconographic buttons" -->
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!--  -->
+										<input type="checkbox" class="gridItem settingToggle"/></input> <!-- AKA: "Work Mode", "SFW Mode" -->
+									 </span>
+								 </div>
+							 </fieldset>
+						 </fieldset>
+					 </section>
+				 </section>
+			</div>
+		</div>
+		
+		
+		<div class="gridContainer" id="wrapper">
+			<!-- @todo -->
+			<div class="gridItem titleBar"    id="topBar">
+				<!-- @todo -->
+				<div id="titleSection">
+					<!-- @todo -->
+					<div id="topBarLogo">
+						LOGO_TEMP
+					 </div>
+					<h1 id="title">EvoCiv Idle</h1>
+					<!-- @todo -->
+					<div class="creatorSection">
+						<div class="madeBy">
+							made by
+						</div>
+						<!-- @todo -->
+						<a href="#" class="creatorLink" target="_blank" rel="noopener noreferrer">Azarlak</a>
+					 </div>
+				 </div>
+				<!-- @todo -->
+				<nav id="topBarMenu">
+					<!-- @todo -->
+					<button class="clickableText" id="saveButton" style="font-size: 1.5em;">
+						&#128190;&#128427;&#128428;Save
+					 </button>
+					<!-- @todo: Whether or not it is clickableIcon should depend on Representation Settings -->
+					<button class="clickableIcon" id="settingsButton" onclick="document.getElementById('settingsOverlay').style.display = 'block';">
+						&#9881;
+					 </button>
+					<!-- @todo -->
+					<button class="clickableText" id="version">
+						Version ALPHA 0.0.1
+					 </button>
+				 </nav>
+			 </div>
+			<!-- @todo -->
+			<div class="gridItem tabsSection" id="gameTabsSection">
+				class: "gridItem tabsSection", id: "gameTabsSection"
+			 </div>
+			<!-- @todo -->
+			<div class="gridItem gamePanel"   id="gameResourcePanel">
+				<!-- @todo -->
+				<div id="iconList">
+					<br>__Interface__<div class="iconList" id="iconListInterface">
+						<br>&oplus;&#8853;&otimes;&#8855;&odot;&#8857;&plusb;&#8862;&timesb;&#8864;&sdotb;&#8865;&hercon;&#8889; - RETICLE/TARGET
+						<br>&check;&#8582;&#10003;&#10004;&#10005;&#10006;&cross;&#10007;&#10008;&#10009;&#10010;&#10011; - MISC_UI
+					</div>
+					<br>__Food__<div id="iconListFood">
+						<br>&#127813;
+						<br>&#127820;&#127822;&#127823;&#127824; - FRUIT[CULINARY]
+						<br>&#127830;&#127831; - MEAT
+						<br>__Drinks__<div id="iconListDrinks">
+							<br>&#127862;&#127863;&#127864;&#127865;&#127866;&#127867;&#127870; - DRINKS
+						 </div>
+						<br>
+					 </div>
+					<br>&#9842;&#9843;&#9844;&#9845;&#9846;&#9847;&#9848;&#9849;&#9850;&#9853; - (TRADE)_(ROUTE/CONNECTION)
+					<br>&dollar;&#36;&pound;&#163;&euro;&#8364;&curren;&#164; - CURRENCY/MONEY/GOLD/INCOME
+					<br>&pr;&#8826;&sc;&#8827;&cuvee;&#8910;&cuwed;&#8911;
+					<br>&#8986;&#8987;&#9200;&#9201;&#9202;&#9203; - TIME
+					<br>&#10022;&#10023;&#10035;&#10037;&#10050; - MAP
+					<br>&#9902;&#9985;&#9986;&#9987;&#9988; - SPLIT/SEPARATE/DISCONNECT
+					<br>&#8451;&#8457;&#8490;&#127777; - TEMPERATURE(AVERAGE_PER(YEAR/CENTURY/1eX_YEARS))
+					<br>&vellip;&#8942;&ctdot;&#8943;
+					<br>&sung;&#9834;&#9835;&#9836; - CULTURE/ARTISTRY/INSPIRATION
+					<br>&#127794;&#127795;&#127796; - PLANTS/VEGETATION/WOOD/LUMBER
+					<br>&le;&#8804;&ge;&#8805; - MISC_MATH
+					<br>&infin;&#8734;&#9854; - (INFINITE/UNLIMITED)(_SOURCE/TIME/DURATION)
+					<br>&#9863;&#9865;&#9906; - POPULATION/PEOPLE
+					<br>&between;&#8812; - DNA/GENETICS
+					<br>&#(10102-10131);
+					<br>&#(10132-10174); - ARROWS/DIRECTION
+					<br>&#(8592-10174); - ARROWS/DIRECTION/MOVEMENT
+					<br>&angsph;&#8738; - SIGHT/VISION
+					<br>&#9998;&#10000; - EDIT/CUSTOMIZE
+					<br>&#9764;&#9882; - COMMERCE/TRADE/NEGOTIATION/MESSAGING
+					<br>&#9784;&#9875;
+					<br>&#9786;&#9787; - HAPPINESS
+					<br>&#9813;&#9819; - LOYALTY/AUTHORITY/CONTROL/INFLUENCE
+					<br>&#9815;&#9821; - RELIGION/FAITH
+					<br>&#9872;&#9873;
+					<br>&#9991;&#9992; - TRANSPORT/TRAVEL/TRANSPORTATION
+					<br>&#9942;&#9943; - TRADE/COMMERCE
+					<br>&Gt;&#8811; - FAST_FORWARD
+					<br>&#128255; - JEWELRY
+					<br>&#128330; - DIPLOMACY/PEACE
+					<br>&#128483; - SPEECH/LANGUAGE/COMMUNICATION/TALKING
+					<br>&#10052; - COLD[BELOW FREEZING] <!-- Different colors for different severities? -->
+					<br>&#8362; - ALLIANCE/COOPERATION/TEAMWORK/AGREEMENT
+					<br>&#8505; - INFORMATION
+					<br>&#8512; - CURRENCY/POPULATION/SUM_OF_SOMETHING
+					<br>&#9750; - AREA/TERRITORY/SPACE/LAND
+					<br>&#9751; - HOUSING
+					<br>&#9760; - CORPSES/DEATH
+					<br>&#9763; - SICK_PEOPLE/DISEASE/ILLNESS
+					<br>&#9773; - TOOLS
+					<br>&#9775; - UNITY/SOCIAL_COHESION
+					<br>&#9785; - UNHAPPINESS
+					<br>&#9832; - (COOKED/PREPARED)_FOOD
+					<br>&#9874; - TOOLS
+					<br>&#9876; - WEAPONS/WAR/BATTLE/ANIMOSITY/ENEMY/ATTACK
+					<br>&#9877; - MEDICINE/MEDICAL_CARE/DOCTOR/RECOVERING_PERSON
+					<br>&#9878; - JUSTICE/LAW/TRADE
+					<br>&#9879; - CHEMISTRY/ALCHEMY
+					<br>&#9880; - BIRTH/BABY/GROWTH
+					<br>&#9881; - TECHNOLOGY/SETTINGS/WORK/MECHANICAL
+					<br>&#9883; - SCIENCE/TECHNOLOGY/KNOWLEDGE/UNDERSTANDING
+					<br>&#9888; - WARNING/ATTENTION/DANGER/NOTIFICATION/URGENT/IMPORTANT
+					<br>&#9889; - ENERGY/POWER/ELECTRICITY
+					<br>&#9892; - REPRODUCTION
+					<br>&#9901; - MERGE/COMBINE
+					<br>&#9903; - CONNECT
+					<br>&#9904; - GRAVE/DEATH/CORPSE
+					<br>&#9905; - FOOD_STORAGE/WATER_STORAGE/CREMATED
+					<br>&#9993; - MESSAGE/CONTACT/SEND
+					<br>&#9919; - KEY/UNLOCK
+					<br>&#9935; - MINING/ORE/METAL/WORK/TOOLS
+					<br>&#9937; - DOCTOR/HEALER
+					<br>&#9960; - HOSPITAL/HEALER'S_HUT
+					<br>&#9951; - TRANSPORT/VEHICLE
+					<br>&#9961; - SHRINE/TEMPLE
+					<br>&#127752; - OPTICS
+					<br>&#127753; - BRIDGE
+					<br>&#127793; - SEED/SEEDLING/SAPLING/PLANT/FARMING
+					<br>
+				 </div>
+			 </div>
+			<!-- @todo -->
+			<div class="gridItem gamePanel"   id="gameMainPanel">
+				<!-- Make this into a <details> element instead? -->
+				<section class="generatorSection" id="unitsSection">
+					unitsSection
+					<!-- @todo -->
+					<label>
+						Allocate <!-- AKA: "Assign", "Designate", "Specialize" -->
+						<!-- @todo: Make this accept inputs such as:
+							, "X%  (% of [something, default: available])"
+							, "X#  (% of available)"
+							, "X%# (% of available)"
+							
+							, "X@  (% of currently allocated)"
+							, "X%@ (% of currently allocated)"
+							
+							, "X$  (not on this one, but on other XSelectors?)"
+							, "X%$ (not on this one, but on other XSelectors?)"
+							
+							, "XeY (scientific)"
+							
+							Possibly allow some (basic) calculations? {
+								If so, possibly require certain (management/economics/mathematics) tech?
+							}
+						 -->
+						<!-- @todo -->
+						<input type="number" class="acquireXSelector allocateXSelector" id="unitsSectionXSelector"/>
+						units per click:
+					 </label>
+					<!-- @todo -->
+					<fieldset class="acquireOptionsContainer allocateOptionsContainer" id="allocateUnitsOptionsContainer">
+						<input type="radio" class="acquireMode allocateMode allocateUnitsMode" value="changeByX" >Plus/Minus X               </input>
+						<input type="radio" class="acquireMode allocateMode allocateUnitsMode" value="untilX"    >Until X                    </input>
+						<input type="radio" class="acquireMode allocateMode allocateUnitsMode" value="untilXmult">Until nearest multiple of X</input>
+						<!-- @todo: TOOLTIP: If true, will buy max possible if desired allocation amount is higher than possible allocation amount -->
+						<input type="checkbox">Partial allocation</input>
+					 </fieldset>
+					<!-- @todo -->
+					<ul class="itemList unitItemList">
+						<!-- @todo -->
+						<template class="item_TEMPLATE" id="unitItem_TEMPLATE">
+							<!-- @todo -->
+							<section class="item unitItem"> <!-- AKA: ?"unitBox" -->
+								<!-- @todo -->
+								<header class="titleBar">
+									titleBar_T
+									<h5></h5>
+								 </header>
+								<!-- @todo -->
+								<span class="main">
+									<!-- @todo -->
+									<div class="thumbnail"></div>
+									<!-- @todo -->
+									<form>
+										<!-- @todo -->
+										<div class="allocationInput"></div>
+										<!-- @todo -->
+											<input type="number" class="allocator"/>
+											<!-- @todo -->
+											<div class="buttonContainer">
+												<!-- @todo -->
+												<div class="allocateMoreButtonsContainer">
+													<button type="button" class="allocateMoreButton"  onclick=""></button>
+													<button type="button" class="allocateMoreButton2" onclick=""></button>
+												 </div>
+												<!-- @todo -->
+												<div class="allocateLessButtonsContainer">
+													<button type="button" class="allocateLessButton"  onclick=""></button>
+													<button type="button" class="allocateLessButton2" onclick=""></button>
+												 </div>
+											 </div>
+										 </div>
+									 </form>
+									<!-- @todo -->
+									<div class="productionDisplay">
+										(
+										<!-- @todo -->
+										<div class="needs">NEEDS</div> <!-- AKA: "requires", "requirement" -->
+										)
+										<!-- @todo -->
+										<div class="drain">DRAIN</div> <!-- AKA: "drain", "in" , "upkeep", "usage", "consumption", "expenditure", "ingredient(s)", "cost(although this one should probably refer to one-time costs)" -->
+										=>
+										<!-- @todo -->
+										<div class="gain" >GAIN </div> <!-- AKA: "gain" , "out", "income", "yield", "production", "product(s)", "result", "creation" -->
+										<!-- (+ -->
+										<!-- NOTE: {
+											"Either(or a combination of): {
+												A: Let this become part of GAIN once the (proper|necessary|required) [...]
+													+ (
+														|| unlock(+able): [tech, tradition] // science<RESOURCE|CATEGORY> + knowledge<RESOURCE|CATEGORY> + tech(nology)<UNLOCKED> Stuff that can be unlocked
+														|| ( [...]                          // culture<RESOURCE|CATEGORY> + tradition<RESOURCE|UNLOCKED> + ?inspiration<UNLOCKED> + ?policy<UNLOCKED><regulation>
+															|| material(+istic)
+															|| assignable: [?]
+														 ): [unit, building]
+														|| /*
+															drain_Component: [...MOVED...],
+															Production_Component: [...MOVED...],
+															production_Component: [...MOVED...],
+															Active_Component: [...MOVED...],
+															active_Component: [...MOVED...],
+															Run_Component: [...MOVED...],
+															run_Component: [...MOVED...],
+															tooltip_Component: [...MOVED...]
+															|| collectable | gatherable | generateable // Stuff USER can produce for free   | IMPLIES: ?"GETTABLE", ?"PRODUCEABLE"
+															|| growable    | generateable              // Stuff USER can produce indefinitely, though not necessarily infinitely(they don't run out, but production speed might be capped/limited) | IMPLIES: "PRODUCEABLE"
+															|| craftable   | refineable                // Stuff USER can make from other things   | IMPLIES: ""
+															|| refineable  | combineable | ingredient  // Stuff that can be made into other things
+															|| achievable  | achievement               // Stuff that can measure user's accomplishments by, which automatically are given upon completion of something specific
+															|| regenerateable | cloneable | multipliable | ?(breedable | farmable) // Stuff USER can produce if you have some of it already, possiby requiring some other resource as well, possibly being limited in terms of gain speed and/or storage limit | EXAMPLE: "plants", "livestock"
+															|| occurable   | happenable | event        // Stuff that can happen | AKA: "trigger_Component" | EXAMPLE: "events"
+															|| cooldownable                            // Stuff that can have a cooldown
+															|| switchable  | changeable | ?(swappable) // Stuff that can switch between states | EXAMPLE: "stuff that has modes"
+														 */
+														|| 
+														|| policy
+														|| infrastructure: [
+															, area: [territory, district]
+															, connection: [
+																,, (transport(+ation) | move(+ment)): [
+																	,, TRANSPORTED: [(population | people | human), (goods | cargo)]
+																	,, POWERTYPE: [ // AKA: "DRIVING FORCE"
+																		,, (people | human | self)
+																		,, (animal | beast | creature)
+																		,, wind
+																		,, water
+																		,, gravity
+																		,, (machine | mechanical): [
+																			, combustion: (wood, peat, coal, gasoline, diesel)
+																			, steam
+																			, electrical/electricity
+																		 ],
+																	], SIZE: (
+																		|| [
+																			, (XXS | Miniscule)
+																			, ( XS | Tiny)
+																			, (  S | Small)
+																			, (  M | Medium | (?Class, EXAMPLE: [Bus, Plane]))
+																			, (  L | Large)
+																			, ( XL | Huge)
+																			, (XXL | Gigantic | Colossal | Monumental)
+																		 ]
+																		|| (people: [
+																			, (Person(+al) | Individual), EXAMPLE: [bike, foot, motorbike, horse(riding)]
+																			, (Family | Group), EXAMPLE: [car]
+																			, ((+School)Class | Apartment building)
+																		] & cargo: [
+																			, Drone
+																		 ])
+																	),
+																	
+																	], (attached | track | guided): [ // Includes attached in tunnels and attached on top of elevated platforms, etc
+																		, conveyor belt
+																		, (rail(+ed) | track | guided): [ // Rail: trains, trams, maglev, vactrain, monorail, etc.
+																			, tram
+																			, train
+																			, metro
+																		]
+																		, cable(+d): [ // LINK: "https://en.wikipedia.org/wiki/Cable_transport"
+																			, (elevator | lift)
+																			, escalator
+																			, ski lift
+																			, (aerial tramway | sky tram | cable car | ropeway | aerial tram)
+																		]
+																	], (land | ground(+ed)): [        // Includes land in tunnels and artificial "land" in the form of elevated platforms
+																		, (paved | road)                     //     Road: foot, bike, animal-powered: (riding, pack, (cart | carriage)), motorbike, car, bus, truck
+																		, (terra(in | neous) | off(+-)road)  // Off-road: foot, bike, animal-powered: (riding, pack)
+																		, snow                               // Snow: snow(+-)mobile
+																	], (water(+(borne | craft)) | hydro | maritime | fluvial): [
+																	], (air | aero | aviation): [
+																	], (space | spaceflight): [ // LINK: "https://en.wikipedia.org/wiki/Space_transport"
+																		, intercontinental // AKA: "infraplanetary"
+																		, interplanetary
+																		, interstellar
+																		, intergalactic
+																	 ],
+																], (resource | lines): [
+																	,, (physical | material): [
+																		,, piped: [
+																			,, gas: [
+																				,, (pneumatic | pressurized): [
+																					, steam
+																					, air
+																					, nitrogen
+																					, carbon dioxide
+																				], flammables: [ // Like gas for US stoves, for instance
+																					, syngas
+																					, natural gas
+																					, propane
+																					, butane
+																					, petroleum
+																					, (liquefied petroleum gas | liquid petroleum gas | LPG | LP gas)
+																					, (kerosene | paraffin | lamp oil | coal oil(obsolete))
+																				], oxygen
+																			], liquid: [
+																				,, (pressurized | hydraulic | fluid power): [
+																					/*
+																					                                ┌─────────────────┐      ┌───────────────┐
+																					   ┌─────────────────────┐  ╭──►│ Solid Mechanics │  ╭──►│ Aerodynamics  │
+																						│ Classical Mechanics │──┤   ├─────────────────┤  │   ├───────────────┤
+																						└─────────────────────┘  ╰──►│ Fluid Mechanics │──┼──►│ Hydrodynamics │
+																						┌─────────────────────┐      └─────────────────┘  ▼   ├───────────────┤
+																						│ River Engineering   │──────────────────────────────►│ Hydraulics    │
+																						└─────────────────────┘                               └───────────────┘
+																					 */
+																					, mineral oil
+																					, water
+																				], drinks(not including water): [
+																					, alcohol: [
+																						, beer
+																					]
+																				], water: [cold, neutral, hot]
+																				,, sewage
+																				,, slurry // LINK: "https://en.wikipedia.org/wiki/Slurry", "https://en.wikipedia.org/wiki/Slurry_pipeline"
+																				,, oil
+																			], pneumatic tube: [
+																			]
+																			,, (gasoline | fuel)
+																			,, diesel
+																			,, (district heating | heat network | teleheating | fjärrvärme)
+																		], (wired | cable): [
+																			, electricity: [DC, AC]
+																			, (network | internet | data): [
+																				, optical fib(er|re)
+																				, electric
+																			]
+																		],
+																	], remote: [
+																		,, radiowave: [broadcast radio, communication radio]
+																		,, optical/visual: [
+																			, visual signals  // Seen 
+																			, optical signals
+																		],
+																	]
+																]
+															]
+														|| something
+													 )
+													+ is
+													+ (available | activated | acquired | in effect | something)
+												 ;
+												B: Let the player deal with the waste somehow, some kind of waste management system.
+											}"
+										 } -->
+										<!-- @todo -->
+										<!-- <div class="waste">WASTE</div> --> <!-- AKA: "leftovers", "by(+-)product(s)" -->
+										<!-- ) -->
+									 </div>
+								</span>
+							</section>
+						</template>
+					</ul>
+				</section>
+			</div>
+			<!-- @todo -->
+			<div class="gridItem gamePanel" id="gameLogPanel">
+				class="gridItem gamePanel", id="gameLogPanel"
+			 </div>
+		</div>
+	</body>
+	
+	
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="./styles/windows.css" />
+	<link rel="stylesheet" type="text/css" href="./styles/development.css" />
+	<script src="./scripts/initiate.js"       ></script>
+	<script src="./scripts/utility.js"        ></script>
+	<script src="./scripts/loadData.js"       ></script>
+	<script src="./scripts/components.js"     ></script>
+	<script src="./scripts/units.js"          ></script>
+	<script src="./scripts/generatorsPanel.js"></script>
+	<script src="./scripts/onPageLoad.js"     ></script>
+</html>

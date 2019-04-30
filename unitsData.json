@@ -1,0 +1,73 @@
+[
+	{
+		"short": "generalist",
+		"name" : "Generalist",
+		"unlocked": true,
+		"recipe": {
+			"consumes": [],
+			"products": [
+				{ "name": "food"  , "amount": 1.1  , "unit": "unit" },
+				{ "name": "water" , "amount": 1.2  , "unit": "unit" },
+				{ "name": "rock"  , "amount": 0.1  , "unit": null   },
+				{ "name": "tool"  , "amount": 0.002, "unit": null   },
+				{ "name": "weapon", "amount": 0.001, "unit": null   }
+			],
+			"requires": []
+		}
+	}, {
+		"short": "gatherer",
+		"name" : "Gatherer",
+		"unlocked": false,
+		"recipe": {
+			"consumes": [],
+			"products": [
+				{ "name": "food"   , "amount": 1.5   },
+				{ "name": "water"  , "amount": 1.5   },
+				{ "name": "rocks"  , "amount": 0.5   },
+				{ "name": "tools"  , "amount": 0.01  },
+				{ "name": "weapons", "amount": 0.001 }
+			],
+			"requires": []
+		}
+	}, {
+		"short": "hunter",
+		"name" : "Hunter",
+		"unlocked": true,
+		"recipe": {
+			"consumes": [],
+			"products": [],
+			"requires": [
+				{ "name": "weapons", "amount": 1 }
+			]
+		}
+	}, {
+		"short": "water",
+		"name" : "Water collector",
+		"unlocked": true,
+		"recipe": {
+			"consumes": [],
+			"products": [
+				{ "name": "water"  , "amount": 5 }
+			],
+			"requires": []
+		}
+	}, {
+		"short": "toolmaker",
+		"name" : "Tool crafter",
+		"unlocked": false,
+		"recipe": {
+			"consumes": ["stone"],
+			"products": [],
+			"requires": []
+		}
+	}, {
+		"short": "weaponmaker",
+		"name" : "Weapon crafter",
+		"unlocked": false,
+		"recipe": {
+			"consumes": ["stone"],
+			"products": [],
+			"requires": []
+		}
+	}
+]
