@@ -4,7 +4,7 @@
  */
 function fetchJsonData(source) {
 	// TEMP
-	return;
+	//return;
 	const request = new XMLHttpRequest();
 	request.open("GET", source);
 	request.responseType = "json";
