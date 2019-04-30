@@ -6,7 +6,7 @@ Copyright (c) 2019 Azarlak
 
 You are free to make any changes in the code for personal or educational purposes. 
 Using the code for commercial gain or creation of derivative works is not permitted,
-unless explicitly allowed elsewhere within this document.
+unless explicitly and specifically allowed elsewhere within this document.
 
 Hosting a translated version of the software (hereinafter referred to as "modified version")
 is permitted, provided that the modified version meets all of the following conditions:
