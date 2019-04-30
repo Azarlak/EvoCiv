@@ -1,7 +1,5 @@
 Copyright (c) 2019 Azarlak
 
-### Definitions
-
 "You", and grammatical variations thereof, shall mean an individual or legal entity exercising permissions granted by this license.
 
 You are free to make any changes in the code for personal or educational purposes. 
