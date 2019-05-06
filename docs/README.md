@@ -1,4 +1,4 @@
 # EvoCiv
-Prototype for idle game
+Idle game, currently in **very** early pre-alpha.
 
-Not much in this readme, mainly just a placeholder in case I want to make a proper one later.
+Not much in this readme yet.
