@@ -1,7 +1,7 @@
 
 
 ### PLEASE NOTE: The guidelines in this document are currently *optional*.
-### As such, you may skip reading it if it feels like too much effort.
+### As such, you may skip reading them if you want to.
 &nbsp;
  
 &nbsp;
