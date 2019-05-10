@@ -1,5 +1,12 @@
-# Contribution Guidelines
 
+
+## **PLEASE NOTE: The instructions in this document are currently *optional*.**  
+  
+  
+  
+  
+  
+# Contribution Guidelines
 ## Design principles (relevant to both issues and pull requests)
 ### Realism
 * Strive for realism, to a reasonable extent at least.
@@ -14,7 +21,6 @@
       <ul><li>If this is a viable option, also leave a comment in the code explaining why X cannot have this effect.</li></ul>
     </li>
   </ul>
-* Everything should have realistic effects(if possible), but the **extent** of the effect
 ### Complexity
 * Early complexity is bad.
 * Later complexity is good.
@@ -24,9 +30,9 @@
 * Gameplay should never need to devolve into rabid clicking, aka <*click-click-click-click-click*>.
 * Strategical/meaningful choices are nice, but not all decisions need to be difficult.
 * Choices where choosing one option locks you out of the other options are often/usually bad.
-* If you're unsure if something fits, feel free to send it in and we'll have a look at it. You could also ask us using an issue with the label [Question].
-
+* If you're unsure about whether something fits, feel free to send it in and we'll have a look at it. You could also ask using an issue with the label *Question*.
 
 ## Coding Conventions (relevant to pull requests only)
+* A couple mistakes or 
 * Tabs for indentation, spaces for alignment.
 * Readable code is better than admirable code.
