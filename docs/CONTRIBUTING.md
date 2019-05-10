@@ -1,7 +1,7 @@
 
 
 ## PLEASE NOTE:
-    The guidelines in this document are currently *optional*.
+    The guidelines in this document are currently optional.
     As such, you may skip reading them if you want to.
     They may become obligatory in the future if deemed necessary.
 &nbsp;
