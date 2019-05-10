@@ -1,11 +1,12 @@
 
 
-## **PLEASE NOTE: The instructions in this document are currently *optional*.**  
-  
-  
-  
-  
-  
+### PLEASE NOTE: The guidelines in this document are currently *optional*.
+### As such, you may skip reading it if it feels like too much effort.
+&nbsp;
+ 
+&nbsp;
+ 
+&nbsp;
 # Contribution Guidelines
 ## Design principles (relevant to both issues and pull requests)
 ### Realism
