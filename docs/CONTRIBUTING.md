@@ -39,12 +39,15 @@
 * A couple inconsistencies or mistakes in following these coding conventions are to be expected,
 and you won't be judged for it, but we might change them or ask you to change them.
 * Tabs for indentation(1 per level), spaces for alignment(as many as necessary).
-* Indentation uses tabs, 1 per level
-* Alignment uses spaces, as many as necessary. Avoid overdoing alignment, as makes changing the code more difficult.
+* Indentation uses tabs, 1 per level.
+* Alignment uses spaces, as many as necessary. Avoid overdoing alignment, as that makes changing the code more difficult.
 * Readable code is better than clever code.
 * Use `const` when possible, use `let` otherwise. Avoid `var` unless absolutely necessary.
 * Place a space...
-  * on both sides of binary operators:
+  * on both sides of binary operators, such as `A++`, `!A`, or `-A;`.
+    <!--
+      This was probably overdoing it at the current stage of this repository,
+      but keeping it here in a comment in case it becomes useful in later stages
     <details><summary>Examples</summary>
     <!--
         Try to not fiddle too much with this part,
@@ -57,11 +60,11 @@ and you won't be judged for it, but we might change them or ask you to change th
         lest ye lose soul and sanity in these cursed catacombs of code.
         
                                                                   Azarlak
-    -->
+    -TEMP_BREAK_DUE_TO_ENCOMPASSING_COMMENT->
     
     <p>
     
-    <!--  Don't remove the empty line above this or everything breaks. -->
+    <!--  Don't remove the empty line above this or everything breaks. -TEMP_BREAK_DUE_TO_ENCOMPASSING_COMMENT->
     ```javascript
     // Arithmetic
     A + B;   A * B;   A ** B;   A % B;
@@ -85,13 +88,9 @@ and you won't be judged for it, but we might change them or ask you to change th
     ```
     </p>
     </details>
-  * on both sides of ternary operators:
-    ```javascript
-    A ? B : C;
-    ```
+    -->
+  * on both sides of ternary operators: `A ? B : C;`.
 * **Don't** place a space...
-  * between a variable and a unary operator acting on it:
-    ```javascript
-    A++;   ++A;   !A;   +A;
-    A--;   --A;   ~A;   -A;
-    ```
+  * between a variable and a unary operator acting on it, such as `-A;`, `!A`, or `A++`.
+* Always use semicolon where applicable
+* In general, try to follow the current style of the document you're working in, unless it breaks the aforementioned guidelines.
