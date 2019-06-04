@@ -13,14 +13,14 @@
 				<!-- @todo: Everything, more or less -->
 				<section class="window" id="settingsWindow">
 					<!-- @todo -->
-					<header  class="titleBar">
+					<header class="titleBar">
 						<h2>Settings</h2>
 						<!-- @todo -->
 						<section class="titleBarButtons">
 							<button class="closeButton" onclick="document.getElementById('settingsOverlay').style.display = 'none';">
 								X
 							</button>
-						</section>
+						 </section>
 					 </header>
 					<!-- @todo -->
 					<section class="content">
@@ -37,6 +37,8 @@
 										<option>Reversed Dark</option><!-- Basically the same as dark, but the darkest tones of Dark are the brightest here, and vice versa -->
 									 </optgroup>
 									<optgroup label="Light themes">
+										<option>Light         </option>
+										<option>Reversed Light</option>
 									 </optgroup>
 									<optgroup label="Thematic">
 										<option>Chóma     </option><!-- Brown-green         --> <!-- AKA: "Solum" -->
@@ -83,7 +85,7 @@
 								 </div>
 								<!-- @todo -->
 								<div class="radioSetContainer" id="velocityUnitSetting">
-									<label for="velocityUnitSetting">Measure income per:</label>
+									<label for="velocityUnitSetting">Measure income and expenses per:</label>
 									<input type="radio" name="velocityUnitSetting"><label>Seconds</label></input>
 									<input type="radio" name="velocityUnitSetting"><label>Minutes</label></input>
 									<input type="radio" name="velocityUnitSetting"><label>Hours  </label></input>
@@ -97,7 +99,7 @@
 								 </div>
 							 </fieldset>
 							<!-- @todo -->
-							<span     class="rangeContainer"  id="fpsSetting"> <!-- TOOLTIP: "This effect is only visual, it does not affect the rate of calculations. May help if you're lagging a bit." -->
+							<span     class="rangeContainer"    id="fpsSetting"> <!-- TOOLTIP: "This effect is only visual, it does not affect the rate of calculations. May help if you're lagging a bit." -->
 								<label for="fpsSetting">FPS:</label>
 								<input type="range"  class="rangeSlider" id="fpsSettingSlider" list="fpsSettingSliderList" min="1" max="60" step="1" value="10"/>
 								<input type="number" class="rangeField"  id="fpsSettingField"  list="fpsSettingAutofillList"></input>
@@ -136,7 +138,7 @@
 									</ul>
 									
 									<label><h3>When displaying</h3></label>
-									<h4>All      </h4>
+									<h4>Other    </h4>
 									<span class="flexboxRow">
 										<input type="checkbox" class="settingToggle"/></input> <!-- AKA: "Prefer icons to labels for buttons", "Prefer iconographic buttons" -->
 										<input type="checkbox" class="settingToggle"/></input> <!-- Anything that can be a symbol, will be -->
@@ -177,7 +179,7 @@
 					<div class="creatorSection">
 						<div class="madeBy">
 							made by
-						</div>
+						 </div>
 						<!-- @todo -->
 						<a href="#" class="creatorLink" target="_blank" rel="noopener noreferrer">Azarlak</a>
 					 </div>
@@ -206,10 +208,11 @@
 			<div class="gridItem gamePanel"   id="gameResourcePanel">
 				<!-- @todo -->
 				<div id="iconList">
-					<br>__Interface__<div class="iconList" id="iconListInterface">
+					<br>__Interface__
+					<div class="iconList" id="iconListInterface">
 						<br>&oplus;&#8853;&otimes;&#8855;&odot;&#8857;&plusb;&#8862;&timesb;&#8864;&sdotb;&#8865;&hercon;&#8889; - RETICLE/TARGET
 						<br>&check;&#8582;&#10003;&#10004;&#10005;&#10006;&cross;&#10007;&#10008;&#10009;&#10010;&#10011; - MISC_UI
-					</div>
+					 </div>
 					<br>__Food__<div id="iconListFood">
 						<br>&#127813;
 						<br>&#127820;&#127822;&#127823;&#127824; - FRUIT[CULINARY]
@@ -311,6 +314,9 @@
 							
 							, "XeY (scientific)"
 							
+							Possibly require certain (management/economics/mathematics) tech for some of this?
+							Possibly require some basic mathematics to
+							
 							Possibly allow some (basic) calculations? {
 								If so, possibly require certain (management/economics/mathematics) tech?
 							}
@@ -336,7 +342,7 @@
 								<!-- @todo -->
 								<header class="titleBar">
 									titleBar_T
-									<h5></h5>
+									<h5>TITLE_TEMP</h5>
 								 </header>
 								<!-- @todo -->
 								<span class="main">
@@ -355,7 +361,7 @@
 													<button type="button" class="allocateMoreButton"  onclick=""></button>
 													<button type="button" class="allocateMoreButton2" onclick=""></button>
 												 </div>
-												<!-- @todo -->
+												<!-- @todo: There's no reason for these to exist, just left-click for normal allocation and right-click for inverted allocation?  -->
 												<div class="allocateLessButtonsContainer">
 													<button type="button" class="allocateLessButton"  onclick=""></button>
 													<button type="button" class="allocateLessButton2" onclick=""></button>
@@ -375,6 +381,7 @@
 										<!-- @todo -->
 										<div class="gain" >GAIN </div> <!-- AKA: "gain" , "out", "income", "yield", "production", "product(s)", "result", "creation" -->
 										<!-- (+ -->
+										<!-- @todo -->
 										<!-- NOTE: {
 											"Either(or a combination of): {
 												A: Let this become part of GAIN once the (proper|necessary|required) [...]
