@@ -20,7 +20,7 @@
 							<button class="closeButton" onclick="document.getElementById('settingsOverlay').style.display = 'none';">
 								X
 							</button>
-						</section>
+						 </section>
 					 </header>
 					<!-- @todo -->
 					<section class="content">
@@ -34,7 +34,7 @@
 								<select id="themeSettingSelector">
 									<optgroup label="Dark themes" >
 										<option>Dark         </option>
-										<option>Reversed Dark</option><!-- Basically the same as dark, but the darkest tones of Dark are the brightest here, and vice versa -->
+										<option>Reversed Dark</option><!-- AKA: "Dark 2" | NOTE: Basically the same as dark, but the darkest tones of 'Dark' are the brightest here, and vice versa -->
 									 </optgroup>
 									<optgroup label="Light themes">
 									 </optgroup>
@@ -42,7 +42,7 @@
 										<option>Chóma     </option><!-- Brown-green         --> <!-- AKA: "Solum" -->
 										<option>Akatharsia</option><!-- Brown-beige-yellow  -->
 										<option>Natura    </option><!-- Green, blue, brown  -->
-										<option>Arenora   </option><!-- Yellow-beige-white  --> <!-- If you figure out the origin of this one's name, well done, it requires knowledge of two different languages, and netiher of them is English. ;P Although at least one step can be googled :P -->
+										<option>Arenora   </option><!-- Yellow-beige-white  --> <!-- If you figure out the origin of this one's name, well done! It requires knowledge of two different languages, and netiher of them is English. ;P Although at least one step can be googled :P -->
 										<option>Wildfire  </option><!-- Red-yellows, ~black -->
 										<option>Atlantis  </option><!-- Blues, darks, greys -->
 									 </optgroup>
@@ -56,18 +56,36 @@
 									<label for="numberFormatSetting">Number format:</label>
 									<!-- @todo -->
 									<select id="numberFormatSettingSelector">
-										<optgroup label="E-notation">
-											<option>Normalized </option>
-											<option>Engineering</option>
+										<!-- @todo: Each of these should probably show the user an example of displayed values -->
+										<!-- @todo: Might want this to be customizable on a per-resource basis. How would that be implemented? -->
+										<!-- @todo: Might also want the decimal separator and digit group separator/delimiter to be customizable. How would that be implemented?
+											CHARACTER:
+												Maybe just small text fields where you can input a character to be used as the separator/delimiter?
+												Maybe options as either select element or radio input elements?
+													If so, these should probably be options: ' '(space), '&thinsp;'(thin space), '&#8239;'(narrow no-break space), ','(comma), '.'(period/full stop), '_'(underscore/underline), '\''(apostrophe), '&middot;'(middle dot/interpunct)
+											PLACEMENT: // AKA: "GROUPING"
+												Maybe a toggle for "thousands delimiter", "Indian"(AKA: "lakh and crore delimiter")(https://en.wikipedia.org/wiki/Indian_numbering_system), and "Vedic"(https://en.wikipedia.org/wiki/Indian_numbering_system#Vedic_numbering_systems)
+										 -->
+										<optgroup label="Exponential">
+											<option>Scientific              </option> <!-- EXAMPLES: "1*10^3" -->
+											<option>E-notation              </option> <!-- EXAMPLES: "1e6,  1e7,   1e8, 1e9" -->
+											<option>E-notation (Engineering)</option> <!-- EXAMPLES: "1e6, 10e6, 100e6, 1e9" -->
 										 </optgroup>
-										<optgroup label="Abbreviation">
-											<option>SI Units  </option>
-											<option>Alphabetic</option> <!-- A-Z, AA-AZ-ZZ, etc -->
-											<option>Standard  </option> <!-- https://www.swarmsim.com/#/decimallegend -->
+										<optgroup label="Prefixes">
+											<option>SI (full)  </option> <!-- EXAMPLES: "kilo, mega, giga, etc.", "milli, micro, nano, etc." | AKA: "SI (text)" -->
+											<option>SI (symbol)</option> <!-- EXAMPLES: "k   , M   , G   , etc.", "m    , μ    , n   , etc." | AKA: "SI (abbr)" -->
+										 </optgroup>
+										<optgroup label="Suffixes">
+											<option>Alphabetic                  </option> <!-- A-Z, AA-AZ-ZZ, etc -->
+											<option>Standard (Short scale, text)</option> <!-- https://www.swarmsim.com/#/decimallegend -->
+											<option>Standard (Short scale, abbr)</option> <!-- https://www.swarmsim.com/#/decimallegend -->
+											<option>Standard (Long  scale, text)</option> <!-- https://www.swarmsim.com/#/decimallegend -->
+											<option>Standard (Long  scale, abbr)</option> <!-- https://www.swarmsim.com/#/decimallegend -->
 										 </optgroup>
 										<optgroup label="Other">
-											<option>Standard</option> <!-- https://www.swarmsim.com/#/decimallegend -->
-											<option>Hybrid  </option>
+											<option>Positional</option> <!-- EXAMPLES: "1000, 1,000,000, 1,000,000,000, etc.", "0.001, 0.000001, 0.000000001" -->
+											<option>Hybrid    </option> <!-- Goes from standard(?) to E-notation -->
+											<option>Random    </option> <!-- Exactly what it says. Absolutely pointless. -->
 										 </optgroup>
 									 </select>
 								 </div>
@@ -84,10 +102,10 @@
 								<!-- @todo -->
 								<div class="radioSetContainer" id="velocityUnitSetting">
 									<label for="velocityUnitSetting">Measure income per:</label>
-									<input type="radio" name="velocityUnitSetting"><label>Seconds</label></input>
-									<input type="radio" name="velocityUnitSetting"><label>Minutes</label></input>
-									<input type="radio" name="velocityUnitSetting"><label>Hours  </label></input>
-									<input type="radio" name="velocityUnitSetting"><label>Days   </label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Second</label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Minute</label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Hour  </label></input>
+									<input type="radio" name="velocityUnitSetting"><label>Day   </label></input>
 								 </div>
 								<!-- @todo -->
 								<div class="radioSetContainer" id="durationUnitSetting">
@@ -99,27 +117,29 @@
 							<!-- @todo -->
 							<span     class="rangeContainer"  id="fpsSetting"> <!-- TOOLTIP: "This effect is only visual, it does not affect the rate of calculations. May help if you're lagging a bit." -->
 								<label for="fpsSetting">FPS:</label>
-								<input type="range"  class="rangeSlider" id="fpsSettingSlider" list="fpsSettingSliderList" min="1" max="60" step="1" value="10"/>
-								<input type="number" class="rangeField"  id="fpsSettingField"  list="fpsSettingAutofillList"></input>
-								<datalist class="sliderMarksList" id="fpsSettingSliderList">
-									<option value=1 ></option>
-									<option value=10></option>
-									<option value=20></option>
-									<option value=30></option>
-									<option value=40></option>
-									<option value=50></option>
-									<option value=60></option>
-								 </datalist>
-								<datalist class="autofillList"    id="fpsSettingAutofillList">
-									<option value=1></option>
-									<option value=5></option>
-									<option value=10></option>
-									<option value=15></option>
-									<option value=20></option>
-									<option value=30></option>
-									<option value=50></option>
-									<option value=60></option>
-								 </datalist>
+								<div id="fpsSetting">
+									<input type="range"  class="rangeSlider" id="fpsSettingSlider" list="fpsSettingSliderList" min="1" max="60" step="1" value="10"/>
+									<input type="number" class="rangeField"  id="fpsSettingField"  list="fpsSettingAutofillList"></input>
+									<datalist class="sliderMarksList" id="fpsSettingSliderList">
+										<option value=1 ></option>
+										<option value=10></option>
+										<option value=20></option>
+										<option value=30></option>
+										<option value=40></option>
+										<option value=50></option>
+										<option value=60></option>
+									</datalist>
+									<datalist class="autofillList"    id="fpsSettingAutofillList">
+										<option value=1></option>
+										<option value=5></option>
+										<option value=10></option>
+										<option value=15></option>
+										<option value=20></option>
+										<option value=30></option>
+										<option value=50></option>
+										<option value=60></option>
+									</datalist>
+								</div>
 							 </span>
 							<!-- @todo -->
 							<fieldset class="ballotsContainer"  id="representationSetting">
@@ -137,6 +157,7 @@
 									
 									<label><h3>When displaying</h3></label>
 									<h4>All      </h4>
+									<!-- @todo: input elements shouldn't both start with '<input ... />' and end with '</input>', either it's self-closing or it isn't. -->
 									<span class="flexboxRow">
 										<input type="checkbox" class="settingToggle"/></input> <!-- AKA: "Prefer icons to labels for buttons", "Prefer iconographic buttons" -->
 										<input type="checkbox" class="settingToggle"/></input> <!-- Anything that can be a symbol, will be -->
@@ -177,7 +198,7 @@
 					<div class="creatorSection">
 						<div class="madeBy">
 							made by
-						</div>
+						 </div>
 						<!-- @todo -->
 						<a href="#" class="creatorLink" target="_blank" rel="noopener noreferrer">Azarlak</a>
 					 </div>
@@ -194,7 +215,7 @@
 					 </button>
 					<!-- @todo -->
 					<button class="clickableText" id="version">
-						Version ALPHA 0.0.1
+						Version ALPHA 0.x.x
 					 </button>
 				 </nav>
 			 </div>
@@ -297,7 +318,7 @@
 					unitsSection
 					<!-- @todo -->
 					<label>
-						Allocate <!-- AKA: "Assign", "Designate", "Specialize" -->
+						Allocate <!-- AKA: "Assign", "Designate", "Specialize", "Employ" -->
 						<!-- @todo: Make this accept inputs such as:
 							, "X%  (% of [something, default: available])"
 							, "X#  (% of available)"
@@ -332,7 +353,7 @@
 						<!-- @todo -->
 						<template class="item_TEMPLATE" id="unitItem_TEMPLATE">
 							<!-- @todo -->
-							<section class="item unitItem"> <!-- AKA: ?"unitBox" -->
+							<section class="item unitItem"> <!-- AKA: "unitItem", "unitCard", ?"unitBox", ?"unitBanner", ?"unitPlatter", ?"unitProfile" -->
 								<!-- @todo -->
 								<header class="titleBar">
 									titleBar_T
@@ -341,25 +362,22 @@
 								<!-- @todo -->
 								<span class="main">
 									<!-- @todo -->
-									<div class="thumbnail"></div>
+									<div class="thumbnail">THUMB_TEMP</div>
 									<!-- @todo -->
-									<form>
+									<form class="allocationInput">
 										<!-- @todo -->
-										<div class="allocationInput"></div>
+										<input type="number" class="allocator"/>
 										<!-- @todo -->
-											<input type="number" class="allocator"/>
+										<div class="buttonContainer">
 											<!-- @todo -->
-											<div class="buttonContainer">
-												<!-- @todo -->
-												<div class="allocateMoreButtonsContainer">
-													<button type="button" class="allocateMoreButton"  onclick=""></button>
-													<button type="button" class="allocateMoreButton2" onclick=""></button>
-												 </div>
-												<!-- @todo -->
-												<div class="allocateLessButtonsContainer">
-													<button type="button" class="allocateLessButton"  onclick=""></button>
-													<button type="button" class="allocateLessButton2" onclick=""></button>
-												 </div>
+											<div class="allocateMoreButtonsContainer">
+												<button type="button" class="allocateMoreButton1" onclick=""></button>
+												<button type="button" class="allocateMoreButton2" onclick=""></button>
+											 </div>
+											<!-- @todo -->
+											<div class="allocateLessButtonsContainer">
+												<button type="button" class="allocateLessButton1" onclick=""></button>
+												<button type="button" class="allocateLessButton2" onclick=""></button>
 											 </div>
 										 </div>
 									 </form>
@@ -537,14 +555,14 @@
 										<!-- <div class="waste">WASTE</div> --> <!-- AKA: "leftovers", "by(+-)product(s)" -->
 										<!-- ) -->
 									 </div>
-								</span>
+								 </span>
 							</section>
 						</template>
 					</ul>
 				</section>
-			</div>
+			 </div>
 			<!-- @todo -->
-			<div class="gridItem gamePanel" id="gameLogPanel">
+			<div class="gridItem gamePanel"   id="gameLogPanel">
 				class="gridItem gamePanel", id="gameLogPanel"
 			 </div>
 		</div>
