@@ -1,3 +1,5 @@
+"use strict";
+
 function connectSlidersToFields() {
 	/** @type {HTMLInputElement[]} */
 	const sliders = (Array.from(document.getElementsByClassName("rangeSlider")));
@@ -19,7 +21,7 @@ function connectSlidersToFields() {
 		// Field updates slider
 		field.oninput = function() {
 			if (this.value > this.max) {
-				this.value = this.max
+				this.value = this.max;
 			}
 			slider.value = this.value;
 		}.bind(field);
@@ -70,7 +72,7 @@ function attachSliderMarkings() {
 /** @todo */
 function doCompatibilityChanges() {
 	if (CSS.supports("display", "grid") !== true) {
-		console.log("NOSUPPORT");
+		console.log("NO SUPPORT FOR GRID");
 	}
 };
 

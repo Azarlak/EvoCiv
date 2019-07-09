@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @typedef Unit_T - Unit type
  * @property {Production_Component} production_Component
@@ -6,7 +8,6 @@
  * @property {    Unlock_Component}     unlock_Component
  * @property {number} ref   - Reference/ID number used internally.
  */
-// * @property {number} value - How many of this unit there are(typically, how many the player has).
 /**
  * @typedef Unit_VISUAL_T - Displayable unit type
  * @property {Unit_T}       data     - 
@@ -28,10 +29,10 @@ const units = {
 		{
 			ref: NaN,
 			unlock_Component:     new     Unlock_Component({
-				unlocked: true,
+				isLocked: false,
 			 }),
 			generic_Component:    new    Generic_Component({
-				short: "unit1",
+				ref: "unit1",
 			 }),
 			resource_Component:   new   Resource_Component({
 				name: "Unit 1",
@@ -44,7 +45,7 @@ const units = {
 			 }),
 		}
 	],
-	/**   @param {number} ref   */
+	/** @param {number} ref */
 	getByRef(ref) {
 		return this.list.find((value) => ref === value.ref);
 	},
