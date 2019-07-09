@@ -21,7 +21,7 @@ function loadResourcesData(source) {};
  * @param {string} [source]
  */
 function loadUnitsData(source) {
-	const data = fetchJsonData(util.override(source, "units.json"));
+	const data = fetchJsonData(util.inputOrFallback(source, "units.json"));
 };
 /** @todo */
 function loadUserData() {};

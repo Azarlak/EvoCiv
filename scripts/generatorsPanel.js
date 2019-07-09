@@ -1,3 +1,5 @@
+"use strict";
+
 // Generators: Units, Jobs, Buildings, etc.
 
 
@@ -80,20 +82,20 @@ function updatePanel() {};
 /** @todo */
 /** @param {Unit_T} unit */
 function generateUnitItem(unit) {
-	/** @type { HTMLTemplateElement } */
+	/** @type {HTMLTemplateElement} */
 	const template = (document.getElementById("unitItem_TEMPLATE"));
-	/** @type { HTMLElement } */
+	/** @type {HTMLElement} */
 	const clone = (template.content.cloneNode(true));
 	
-	/** @type { HTMLElement } */
+	/** @type {HTMLElement} */
 	const unit_El = (clone.firstElementChild);
-	unit_El.id = unit.generic_Component.short + "UnitItem";
-	unit_El.style.display = (unit.unlock_Component.unlocked)
-		? "inline-block"
-		: "none"
+	unit_El.id = unit.generic_Component.ref + "UnitItem";
+	unit_El.style.display = (unit.unlock_Component.isLocked)
+		? "none"
+		: "inline-block"
 	;
 	
-	/** @type { HTMLElement } */
+	/** @type {HTMLElement} */
 	const titleBar_El = (unit_El.getElementsByClassName("titleBar")[0]);
 	const main_El     = (unit_El.getElementsByClassName("main"    )[0]); {
 		titleBar_El.innerText = unit.resource_Component.name;
@@ -114,7 +116,7 @@ function generateUnitItem(unit) {
 			const drain_El = production_El.getElementsByClassName("drain")[0];
 			const gain_El  = production_El.getElementsByClassName("gain" )[0];
 			
-			if (false === generateGainElement (gain_El , unit)) {  gain_El.remove(); }
+			if (false === generateGainElement( gain_El , unit)) {  gain_El.remove(); }
 			if (false === generateNeedsElement(needs_El, unit)) { needs_El.remove(); }
 			if (false === generateDrainElement(drain_El, unit)) { drain_El.remove(); }
 		}
@@ -129,8 +131,8 @@ const generatorsPanel = {
 	hideAll() {
 		
 	},
-	/* CONSIDER: Instead of generating stuff like this, maybe we should
-			have it in the html document, and just hide/show as necessary?
+	/* CONSIDER: Instead of generating stuff like this, maybe we should ...
+		... have it in the html document, and just hide/show as necessary?
 	 */
 	// /**
 	//  * @todo
@@ -144,7 +146,7 @@ const generatorsPanel = {
 			unitsSection.ref.appendChild(unitElement);
 		}
 	}, */
-	/**   @param {Units_T} units   */
+	/** @param {Units_T} units */
 	generate(units) { return generateUnitsSection(units); },
 };
 
@@ -158,7 +160,7 @@ const generatorsPanel = {
 }; */
 
 
-/**   @param {Units_T} units   */
+/** @param {Units_T} units */
 function generateUnitsSection(units) {
 	unitsSection.ref = document.getElementById("unitsSection");	
 	for (let i=0; i<units.list.length; i++) {
